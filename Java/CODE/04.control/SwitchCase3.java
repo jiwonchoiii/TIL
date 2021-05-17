@@ -1,0 +1,33 @@
+package ifexample;
+
+public class SwitchCase3 {
+
+	public static void main(String[] args) {
+
+		int step = 5;
+		String ment;
+
+		switch (step) {
+		case 1:
+			ment = "1Ãþ ¾à±¹";
+			break;
+		case 2:
+			ment = "2Ãþ Á¤Çü¿Ü°ú";
+			break;
+		case 3:
+			ment = "3Ãþ ÇÇºÎ°ú";
+			break;
+		case 4:
+			ment = "4Ãþ Ä¡°ú";
+			break;
+		case 5:
+			ment = "5Ãþ Çï½º Å¬·´";
+			break;
+		default:
+			ment = "Á¸ÀçÇÏÁö ¾Ê´Â Ãþ";
+
+		}
+		System.out.println(ment + "ÀÔ´Ï´Ù");
+	}
+
+}
