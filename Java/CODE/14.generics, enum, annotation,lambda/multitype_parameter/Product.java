@@ -14,4 +14,5 @@ public class Product<T, M> {
 	private T kind; // 선언
 	private M model; // 선언 
 
-}
+} // end class
+

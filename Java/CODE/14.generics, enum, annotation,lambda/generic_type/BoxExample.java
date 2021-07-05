@@ -1,15 +1,13 @@
 package generic_type;
 
 
-
-
 import lombok.extern.log4j.Log4j2;
 
 
 @Log4j2
 public class BoxExample {
 
-	// 제네릭타입 중에, Box<T>라고 하는 제네릭 클래스를 "사용"하는 예제
+		// 제네릭타입 중에, Box<T>라고 하는 제네릭 클래스를 "사용"하는 예제
 	public static void main(String[] args) {
 
 		// 제네릭 클래스를 사용하여 객체 생성
@@ -38,8 +36,6 @@ public class BoxExample {
 		box3.set(new Apple());
 		
 		box3.get();
-		
-
 	} // main
 
 } // end class
