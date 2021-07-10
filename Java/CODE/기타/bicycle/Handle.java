@@ -31,7 +31,7 @@ public class Handle { // POJO / direction 열거타입으로 수정
 		log.debug("breakDown() invoked.");
 
 		log.info("***앗, 핸들이 고장났다! ***");
-		log.info("핸들 교체 필요!!");
+		log.info("핸들 교체 필요!");
 
 	}// breakDown
 
