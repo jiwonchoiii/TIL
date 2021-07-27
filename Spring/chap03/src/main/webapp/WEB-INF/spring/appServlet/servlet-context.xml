@@ -21,7 +21,7 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-<context:component-scan base-package="org.zerock.myapp.sample" />
+<context:component-scan base-package="org.zerock.myapp.controller" />
 	
 </beans:beans>
 
