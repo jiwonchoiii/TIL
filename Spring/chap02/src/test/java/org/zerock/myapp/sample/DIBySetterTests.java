@@ -58,10 +58,10 @@ public class DIBySetterTests {
 		
 		//스프링이 대신 해줌
 //		Chef chef = new Chef(); 
-//		Restaurant res = new Restaurant(chef);
+//		Restaurant res = new Restaurant(chef); // 생성자를 통한 주입
 //		
 //		Restaurant res = new Restaurant();		
-//		res.setChef(chef); // 생성자를 통한 주입
+//		res.setChef(chef); // setter 메소드를 통한 주입
 	} // testDI
 	
 	@After
