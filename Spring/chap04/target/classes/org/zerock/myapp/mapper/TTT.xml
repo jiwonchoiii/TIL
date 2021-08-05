@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.zerock.myapp.mapper.TTT">
+
+    <select id="getSalary" resultType="double">
+        <![CDATA[ 
+
+            SELECT salary 
+            FROM employees 
+            WHERE employee_id = #{empid}
+            AND email = #{email}
+
+        ]]>
+    </select>
+    
+</mapper>    
