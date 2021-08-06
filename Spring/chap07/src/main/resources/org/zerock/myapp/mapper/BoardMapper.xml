@@ -70,7 +70,7 @@
 	    UPDATE tbl_board
 	    SET TITLE= #{title}, 
 	    CONTENT= #{content},
-	    WRITER= #{writer}
+	    WRITER= #{writer},
 	    UPDATE_TS= SYSDATE
 	    WHERE BNO = #{bno}
 
