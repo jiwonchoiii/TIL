@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<beans:beans
+	xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
+	
+
+	<!-- Enables the Spring MVC @Controller programming model -->
+	<annotation-driven />
+
+
+	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
+	<resources mapping="/resources/**" location="/resources/" />
+
+
+	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
+	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<beans:property name="prefix" value="/WEB-INF/views/" />
+		<beans:property name="suffix" value=".jsp" />
+	</beans:bean>
+	
+	
+	<context:component-scan base-package="org.zerock.myapp.controller" />
+	<context:component-scan base-package="org.zerock.myapp.service" />
+	<context:component-scan base-package="org.zerock.myapp.interceptor" />
+	<context:component-scan base-package="org.zerock.myapp.persistence" />
+	
+	<view-controller path="/user/login" view-name="user/login" status-code="200"/>
+<!-- 이렇게해도 화면을 띄울 수 있다.  -->
+		
+	<beans:bean id="passwordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+	
+	<beans:bean id="sampleInterceptor" class="org.zerock.myapp.interceptor.SampleInterceptor" />
+	<beans:bean id="loginInterceptor" class="org.zerock.myapp.interceptor.LoginInterceptor" />	
+	
+	<interceptors>
+		<interceptor>
+			<mapping path="/sample/doA" />
+			<mapping path="/sample/doB" />
+			<mapping path="/sample/doC" />
+			<mapping path="/sample/doD" />
+
+			<!-- <mapping path="/**/do*" /> -->
+			
+			<beans:ref bean="sampleInterceptor" />
+		 </interceptor>
+		 
+		
+		<interceptor>
+			<mapping path="/user/loginPost" />			
+			
+			
+			<beans:ref bean="loginInterceptor" />
+		</interceptor>
+
+
+	</interceptors>
+	
+</beans:beans>
