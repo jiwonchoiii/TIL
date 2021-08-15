@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.zerock.myapp.mapper.BoardMapper">
+
+    <select id="getList" resultType="org.zerock.myapp.domain.BoardVO">        
+        <![CDATA[         
+            SELECT /*+ index_desc(tbl_board) */ *
+            FROM tbl_board
+        ]]>
+    </select>
+
+
+    <select 
+        id="getListWithPaging"
+        resultType="org.zerock.myapp.domain.BoardVO">
+
+        SELECT
+            /*+ index_desc(tbl_board) */ *
+        FROM
+            tbl_board
+        OFFSET ( #{currPage} - 1 ) * #{amount} ROWS
+        FETCH NEXT #{amount} ROWS ONLY
+    
+    </select>
+
+
+
+    <select id="read" resultType="org.zerock.myapp.domain.BoardVO">        
+        <![CDATA[         
+            SELECT *
+            FROM tbl_board
+            WHERE bno = #{bno}
+        ]]>
+    </select>
+
+    <delete id="delete">
+        DELETE FROM tbl_board
+        WHERE bno = #{bno}
+    </delete>
+
+    <insert id="insert">
+        INSERT INTO tbl_board (title, content, writer)
+        VALUES( #{title}, #{content}, #{writer} )
+    </insert>
+
+    <insert id="insertSelectKey">
+        <selectKey keyProperty="bno" order="BEFORE" resultType="int">
+            SELECT ISEQ$$_187345.nextval FROM dual
+        </selectKey>
+
+        INSERT INTO tbl_board (bno, title, content, writer)
+        VALUES( #{bno}, #{title}, #{content}, #{writer} )
+    </insert>
+
+    <update id="update">
+        UPDATE tbl_board
+        SET
+            title = #{title},
+            content = #{content},
+            writer = #{writer},
+            update_ts = sysdate
+        WHERE
+            bno = #{bno}
+    </update>
+    
+    
+    <select id="getTotalCount" resultType="int">
+        SELECT count(bno)
+        FROM tbl_board
+        WHERE bno > 0
+    </select>
+
+</mapper>    
